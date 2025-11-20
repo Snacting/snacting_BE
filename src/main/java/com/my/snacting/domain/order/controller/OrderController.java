@@ -4,6 +4,7 @@ import com.my.snacting.domain.order.dto.request.OrderCreateRequest;
 import com.my.snacting.domain.order.dto.response.OrderCreateResponse;
 import com.my.snacting.domain.order.service.OrderService;
 import com.my.snacting.global.auth.CurrentUserId;
+import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.Parameter;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.validation.Valid;
@@ -22,6 +23,7 @@ public class OrderController {
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
+    @Operation(summary = "주문서 생성")
     public OrderCreateResponse createFeed(
             @Parameter(hidden = true) @CurrentUserId Long userId,
             @Valid @RequestBody OrderCreateRequest request
