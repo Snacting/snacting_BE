@@ -17,6 +17,11 @@ spring:
       hibernate:
         format_sql: true
 
+  sql:
+    init:
+      mode: always
+      defer-datasource-initialization: true
+
 server:
   servlet:
     session:
@@ -32,5 +37,5 @@ management:
         health: /health-check
 
 jwt:
-  secret: bZetB8wV9iAkO/abLyhH0xaDImEa1LLb5hOrhXmPd9s=
+  secret: ${JWT_SECRET}
   expiration: 86400000
