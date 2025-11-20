@@ -9,6 +9,8 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import org.hibernate.annotations.SQLRestriction;
 
+import java.util.List;
+
 @Entity
 @Table(name = "orders")
 @Getter
@@ -31,18 +33,46 @@ public class Order extends BaseEntity {
     @Column(name = "total_budget", nullable = false)
     private int totalBudget;
 
-    @Column(name = "category", nullable = false)
-    private String category;
+    @ElementCollection
+    @CollectionTable(name = "order_categories", joinColumns = @JoinColumn(name = "order_id"))
+    @Column(name = "category")
+    private List<String> categories;
+
+    @Column(name = "location", nullable = false)
+    private String location;
+
+    @Column(name = "detail_address", nullable = false)
+    private String detailAddress;
+
+    @Column(name = "budget_per_person", nullable = false)
+    private int budgetPerPerson;
 
     @Column(name = "date", nullable = false)
     private String date;
 
+    @Column(name = "deleted", nullable = false, columnDefinition = "boolean default false")
+    private boolean deleted;
+
     @Builder
-    public Order (User user, int headcount, int totalBudget, String category, String date) {
+    public Order (User user, int headcount, int totalBudget, List<String> categories, String location, String detailAddress, int budgetPerPerson, String date) {
         this.user = user;
         this.headcount = headcount;
         this.totalBudget = totalBudget;
-        this.category = category;
+        this.categories = categories;
+        this.location = location;
+        this.detailAddress = detailAddress;
+        this.budgetPerPerson = budgetPerPerson;
+        this.date = date;
+
+        this.deleted = false;
+    }
+
+    public void update(int headcount, int totalBudget, List<String> categories, String detailAddress, int budgetPerPerson, String date) {
+        this.headcount = headcount;
+        this.totalBudget = totalBudget;
+        this.categories = categories;
+        this.detailAddress = detailAddress;
+        this.budgetPerPerson = budgetPerPerson;
         this.date = date;
     }
 }
