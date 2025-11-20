@@ -2,7 +2,7 @@ package com.my.snacting.domain.order.dto.request;
 
 import java.util.List;
 
-public record OrderCreateRequest(
+public record OrderUpdateRequest(
         int headcount,
         int totalBudget,
         int budgetPerPerson,

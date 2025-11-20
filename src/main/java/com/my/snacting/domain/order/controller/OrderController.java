@@ -1,7 +1,10 @@
 package com.my.snacting.domain.order.controller;
 
 import com.my.snacting.domain.order.dto.request.OrderCreateRequest;
+import com.my.snacting.domain.order.dto.request.OrderUpdateRequest;
 import com.my.snacting.domain.order.dto.response.OrderCreateResponse;
+import com.my.snacting.domain.order.dto.response.OrderGetResponse;
+import com.my.snacting.domain.order.dto.response.OrderUpdateResponse;
 import com.my.snacting.domain.order.service.OrderService;
 import com.my.snacting.global.auth.CurrentUserId;
 import io.swagger.v3.oas.annotations.Operation;
@@ -29,5 +32,24 @@ public class OrderController {
             @Valid @RequestBody OrderCreateRequest request
             ) {
         return orderService.createOrder(userId, request);
+    }
+
+    @GetMapping
+    @ResponseStatus(HttpStatus.OK)
+    @Operation(summary = "주문서 조회", description = "현재 로그인한 유저의 주문서를 조회합니다.")
+    public OrderGetResponse getOrder(
+            @Parameter(hidden = true) @CurrentUserId Long userId
+    ) {
+        return orderService.getOrder(userId);
+    }
+
+    @PutMapping
+    @ResponseStatus(HttpStatus.OK)
+    @Operation(summary = "주문서 수정", description = "현재 로그인한 유저의 주문서를 전체 수정합니다.")
+    public OrderUpdateResponse updateOrder(
+            @Parameter(hidden = true) @CurrentUserId Long userId,
+            @Valid @RequestBody OrderUpdateRequest request
+    ) {
+        return orderService.updateOrder(userId, request);
     }
 }

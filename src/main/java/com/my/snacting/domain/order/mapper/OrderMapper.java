@@ -13,7 +13,10 @@ public class OrderMapper {
                 .user(user)
                 .headcount(request.headcount())
                 .totalBudget(request.totalBudget())
-                .category(request.category())
+                .budgetPerPerson(request.budgetPerPerson())
+                .categories(request.categories())
+                .location(user.getSchool())
+                .detailAddress(request.detailAddress())
                 .date(request.date())
                 .build();
     }
