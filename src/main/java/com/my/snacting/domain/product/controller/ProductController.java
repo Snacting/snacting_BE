@@ -47,4 +47,23 @@ public class ProductController {
     ) {
         return productService.getProductById(productId);
     }
+
+    @PostMapping("/{productId}/like")
+    @ResponseStatus(HttpStatus.OK)
+    @Operation(summary = "상품 좋아요 토글", description = "상품에 좋아요를 추가하거나 취소합니다.")
+    public void toggleProductLike(
+            @Parameter(hidden = true) @CurrentUserId Long userId,
+            @PathVariable Long productId
+    ) {
+        productService.toggleProductLike(userId, productId);
+    }
+
+    @GetMapping("/liked")
+    @ResponseStatus(HttpStatus.OK)
+    @Operation(summary = "좋아요한 상품 조회", description = "현재 로그인한 유저가 좋아요한 상품 목록을 조회합니다.")
+    public List<ProductGetResponse> getLikedProducts(
+            @Parameter(hidden = true) @CurrentUserId Long userId
+    ) {
+        return productService.getLikedProducts(userId);
+    }
 }
