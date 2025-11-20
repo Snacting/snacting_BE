@@ -12,7 +12,7 @@ spring:
     database-platform: org.hibernate.dialect.MySQLDialect
     show-sql: true
     hibernate:
-      ddl-auto: {DB_DDL_AUTO}
+      ddl-auto: ${DB_DDL_AUTO}
     properties:
       hibernate:
         format_sql: true
@@ -30,3 +30,7 @@ management:
       base-path: /
       path-mapping:
         health: /health-check
+
+jwt:
+  secret: bZetB8wV9iAkO/abLyhH0xaDImEa1LLb5hOrhXmPd9s=
+  expiration: 86400000
