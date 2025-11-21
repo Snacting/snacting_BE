@@ -32,37 +32,37 @@ public class OwnerRequestDataLoader implements ApplicationRunner {
         List<OwnerRequest> ownerRequests = List.of(
                 OwnerRequest.builder()
                         .order(null)  // 주문서 없음
-                        .storeLocation("국민대 정문")
-                        .productName("BBQ 치킨 세트")
-                        .pricePerPerson(15000)
+                        .storeLocation("로드샌드위치 미아사거리역점")
+                        .productName("페스츄리 로드샌드위치, 밀크티 세트")
+                        .pricePerPerson(8500)
                         .build(),
 
                 OwnerRequest.builder()
                         .order(null)
-                        .storeLocation("국민대 후문")
-                        .productName("김밥천국 세트")
-                        .pricePerPerson(8000)
+                        .storeLocation("명량핫도그 성신여대점")
+                        .productName("감자통모짜핫도그 세트")
+                        .pricePerPerson(6000)
                         .build(),
 
                 OwnerRequest.builder()
                         .order(null)
-                        .storeLocation("성신여대 입구")
-                        .productName("파파존스 피자")
-                        .pricePerPerson(12000)
+                        .storeLocation("신전떡복이 성신여대점")
+                        .productName("신전 떡튀순 세트")
+                        .pricePerPerson(7000)
                         .build(),
 
                 OwnerRequest.builder()
                         .order(null)
-                        .storeLocation("국민대 북악관")
-                        .productName("맥도날드 세트")
+                        .storeLocation("피자스쿨 돈암점")
+                        .productName("2인 피자 세트")
                         .pricePerPerson(9000)
                         .build(),
 
                 OwnerRequest.builder()
                         .order(null)
-                        .storeLocation("국민대 중앙도서관")
-                        .productName("스타벅스 음료세트")
-                        .pricePerPerson(6000)
+                        .storeLocation("이삭토스트 정릉시장점")
+                        .productName("햄치즈 토스트 세트")
+                        .pricePerPerson(6200)
                         .build()
         );
 
